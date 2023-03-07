@@ -61,11 +61,11 @@ class metalbmc(bmc.Bmc):
     def set_boot_device(self, bootdevice):
         metal_instance = self.metal_manager.get_device(self.metaluuid)
         logger.info('IPMI BMC Set_Boot_Device request.')
-        if bootdevice == 'network':
+        if bootdevice == 'pxe':
             logger.info('Metal Server always_ipxe being set to True')
             metal_instance.always_pxe = True
             metal_instance.update()
-        if bootdevice == 'hd':
+        if bootdevice == 'disk':
             logger.info('Metal Server always_ipxe being set to False')
             metal_instance.always_pxe = False
             metal_instance.update()
